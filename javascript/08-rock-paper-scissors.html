@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Variables Practice
+        </title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <main>
+            <button onclick="
+                score.wins = 0;
+                score.losses = 0;
+                score.ties = 0;
+                localStorage.removeItem('score');
+            ">
+                reset
+            </button>
+        </main>
+        <script>
+            const score = JSON.parse(localStorage.getItem('score')) || {
+                wins: 0,
+                losses: 0,
+                ties: 0
+            };
+            score.wins++;
+            score.losses++;
+            score.ties++;
+            console.log(score.wins + " " + score.losses + " " + score.ties);
+
+            localStorage.setItem('score', JSON.stringify(score));
+
+
+            const obj1 = {
+                message: 'test',
+                price: 100
+            };
+
+            const obj2 = obj1;
+            const obj3 = {
+                'message': 'test',
+                ['subtraction-test']: "bruh"
+            };
+            console.log(obj1);
+            console.log(obj3);
+            console.log(obj3['subtraction-test']);
+            const obj4 = {
+                message: 'test'
+            };
+
+            console.log(obj1 == obj2);
+            console.log(obj1 === obj2);
+            console.log(obj1 == obj4);
+
+            const { message, price } = obj1;
+            console.log(message, price);
+
+            const obj5 = {
+                message,
+                price,
+                fun: function function1() {
+                    console.log('Fun has run');
+                },
+                fun2() {
+                    console.log('Fun2 has run')
+                }
+            };
+
+            console.log(obj5);
+            console.log(obj5.message);
+            console.log(obj5.price);
+            obj1.message = "did this change?";
+            console.log(obj1);
+            console.log(obj5);
+            obj5.fun();
+            obj5.fun2();
+        </script>
+    </body>
+
+</html>
